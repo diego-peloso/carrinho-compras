@@ -16,5 +16,6 @@ Projeto desenvolvido em JavaScript puro para praticar manipulação do DOM e mé
 ## 📌 Como rodar o projeto
 Apenas abra o arquivo `index.html` em qualquer navegador.
 
-### Aparencia do projeto(Apenas alinhada)
+### 📸 Aparencia do projeto(Apenas alinhada)
+- Foto da aparencia atual do projeto, apenas alguns ajustes com o flexbox
 <img src="img/preview.png" alt="Demonstração do projeto" width="400">
