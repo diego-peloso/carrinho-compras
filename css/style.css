@@ -95,12 +95,7 @@
         width: 100%;
     }
 
-    .res {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: var(--space-md)
-    }
+
 
     .input-form {
         width: 100%;
@@ -116,7 +111,8 @@
         font-size: var(--font-size-sm);
         line-height: var(--lh-sm);
     }
-    input[type="submit"]{
+    .btn{
+        width: 100%;
         font-weight: var(--font-weight-semibold);
         font-size: var(--font-size-md);
         line-height: var(--lh-none);
@@ -127,17 +123,17 @@
         transition: all 0.2s ease-in-out;
         cursor:pointer;
     }
-    input[type="submit"]:hover{
+    .btn:hover{
         background-color: var(--color-brand-hover);
         transform: scale(1.01);
         text-decoration: underline
     }
 
-    input[type="submit"]:active{
+    .btn:active{
         background-color: var(--color-brand-pressed);
         transform: scale(0.99);
     }
-    input[type="submit"]:focus-visible{
+    :is(button,input):focus-visible{
     outline:3px solid transparent;
     outline-offset:2px;
     box-shadow: 
@@ -150,6 +146,13 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+    }
+    .group{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
     ul{
         width: 100%;
