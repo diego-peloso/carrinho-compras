@@ -1,0 +1,71 @@
+
+:root{
+    /* TOKENS SEMÂNTICOS */
+
+
+    /* Cores de Marca / Ação Principal */
+    --color-brand-default: var(--_brand-700);
+    --color-brand-hover: var(--_brand-500);
+    --color-brand-pressed: var(--_brand-900);
+    --color-brand-light: var(--_brand-100);
+    --color-brand-subtle: var(--_brand-50);
+
+    /* Cores de Superfície (Backgrounds) */
+    --color-bg-body: var(--_grey-50);
+    --color-bg-surface: var(--_grey-100);
+    --color-bg-subtle: var(--_grey-200);
+
+    /* Cores de Texto e Ícones */
+    --color-text-primary: var(--_grey-900);
+    --color-text-secondary: var(--_grey-700);
+    --color-text-muted: var(--_grey-500);
+    --color-text-brand-muted: var(--_brand-500);
+    --color-text-brand-default: var(--_brand-700);
+    --color-text-on-brand: var(--_white);
+
+    --color-box-shadow-focus-inner: var(--_grey-50);
+    --color-box-shadow-focus-outer: var(--_grey-700);
+
+    /*Cores de Bordas, Divisores*/
+    --color-border-subtle: var(--_grey-200);
+    --color-border-default: var(--_grey-300);
+    --color-divider: var(--_grey-200);
+  
+
+    /* Espaçamentos, Border-radius e Espessura de Border*/
+    --space-xs: var(--_space-1);
+    --space-sm: var(--_space-2);
+    --space-md: var(--_space-4);
+    --space-lg: var(--_space-6);
+    --space-xl: var(--_space-8);    
+
+    --radius-xs: var(--_radius-1);
+    --radius-sm: var(--_radius-2);
+    --radius-md: var(--_radius-4);
+    --radius-lg: var(--_radius-6);
+    --radius-pill:var(--_radius-full);
+
+    --border-width-sm: var(--_border-width-1);
+    --border-width-md: var(--_border-width-2);
+
+
+    /* Tamanhos de Fonte */
+    --font-size-xs: var(--_font-size-12);
+    --font-size-sm: var(--_font-size-14);
+    --font-size-md: var(--_font-size-16);
+    --font-size-lg: var(--_font-size-18);
+    --font-size-xl: var(--_font-size-20);
+    --font-size-2xl: var(--_font-size-24);
+
+    /* Pesos de Fonte */
+    --font-weight-regular: var(--_font-weight-400);
+    --font-weight-medium: var(--_font-weight-500);
+    --font-weight-semibold: var(--_font-weight-600);
+    --font-weight-bold: var(--_font-weight-700);
+    
+    /*Line-Heigth*/
+    --lh-none: var(--_lh-100);       
+    --lh-sm: var(--_lh-120); 
+    --lh-md: var(--_lh-140);    
+    --lh-lg: var(--_lh-150);       
+}

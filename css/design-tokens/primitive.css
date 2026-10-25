@@ -1,0 +1,64 @@
+:root {
+/* TOKENS PRIMITIVOS*/
+
+    /* Paleta Brand */
+    --_brand-50:  #FFEAEA;
+    --_brand-100: #FFCFD3;
+    --_brand-300: #FF6B76;
+    --_brand-500: #E81E2C;
+    --_brand-700: #C8102E;
+    --_brand-900: #8A0010;
+
+    /* Paleta Neutra (Grey) */
+    --_grey-50: #F7F7F7;
+    --_grey-100: #F2F2F2;
+    --_grey-200: #DFDFDF;
+    --_grey-300: #CCCCCC;
+    --_grey-500: #717171;
+    --_grey-700: #3F3F3F;
+    --_grey-900: #1F1F1F;
+
+    --_white:#fff;
+    /*Valores de Espacameto e Border-Radius e Espessura*/
+
+    /* Valores Brutos de Espaço (Multiplicadores de 4px) */
+    --_space-1: 0.25rem; /* 4px */
+    --_space-2: 0.5rem;  /* 8px */
+    --_space-4: 1rem;    /* 16px */
+    --_space-6: 1.5rem;  /* 24px */
+    --_space-8: 2rem;    /* 32px */
+
+    /* Valores Brutos de Border-Radius Multiplicadores de 4px) */
+    --_radius-1:0.25rem; /* 4px */
+    --_radius-2:0.5rem;  /* 8px */
+    --_radius-4:1rem;    /* 16px */
+    --_radius-6:1.5rem;  /* 24px*/
+    --_radius-full:50vh;  /*50vh -- vira uma pilula, diferente do 50%*/
+
+    /*Valores Brutos de Espessura de Border*/
+    --_border-width-1:1px;
+    --_border-width-2:2px;
+
+    /*Valores de Tamanho e Peso de Fonte*/
+
+    /* Valores Brutos de Tamanho de Fonte */
+    --_font-size-12: 0.75rem;  /* 12px */
+    --_font-size-14: 0.875rem; /* 14px */
+    --_font-size-16: 1rem;     /* 16px */
+    --_font-size-18: 1.125rem; /* 18px */
+    --_font-size-20: 1.25rem;  /* 20px */
+    --_font-size-24: 1.5rem;   /* 24px */
+
+    /* Valores Brutos de Peso de Fonte */
+    --_font-weight-400: 400;
+    --_font-weight-500: 500;
+    --_font-weight-600: 600;
+    --_font-weight-700: 700;
+
+    /* Valores brutos de Line-Heigth*/
+    --_lh-100: 1;
+    --_lh-120: 1.2;
+    --_lh-140: 1.4;
+    --_lh-150: 1.5;
+
+}
