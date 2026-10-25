@@ -1,55 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="conteiner">
-        <form action="" method="get">
+    <div class="area-conteiner">
+        <div class="card conteiner">
+            <form action="" method="get" class="main">
+                <div class="group-text-fields">
 
-            <div class="title"><h2>Digite as informações do produto</h2></div>
-            <div class="input-area">
+                    <div class="text-field name">
+                        <label for="name">Digite o produto</label>
+                        <input type="text" placeholder="Ex.: Camiseta" id="name" class="input-form" required>
+                    </div>
 
-                <div class="group name">
-                    <label for="input-nome">Digite o produto</label>
-                    <input type="text"  placeholder="Ex.: Camiseta" id="input-name"requerid>
-                </div>
-                
 
-                <div class="group price">
-                    <label for="input-preco">Digite o preço do produto</label>
-                    <input type="number"  placeholder="Ex.: 60" id="input-price">
+                    <div class="text-field price">
+                        <label for="price">Digite o preço do produto</label>
+                        <input type="number" placeholder="Ex.: 60" id="price" class="input-form" required>
+                    </div>
+
+                    <div class="text-field quantity">
+                        <label for="quantity">Digite a quantidade do produto</label>
+                        <input type="number" placeholder="Ex.: 2" id="quantity" class="input-form" required>
+                    </div>
+
                 </div>
-                    
-                <div class="group quantity">
-                    <label for="input-quantidade">Digite a quantidade do produto</label>
-                    <input type="number"  placeholder="Ex.: 2" id="input-quantity">
+
+                <input type="submit" value="Pedir produto" class="btn button-submit">
+
+            </form>
+        </div>
+        <div class="card res">
+            <div class="head">
+                <p>Produtos</p>
+                <div class="order-quantity">
+                    <p class="quantity">0</p>
                 </div>
-                
             </div>
 
-            <input type="submit" value="Pedir produto" class="button-submit">
-            
-        </form>
-
-        <div class="res">       
-            <div class="head"><p>Chutes</p><p class="chutes-totais">0</p></div>
-
-            <ul>
-                <li>
-                    <span>Sem produtos pedidos existentes</span>
-                </li>
+            <ul class="list">
+                <li class="placeholder" ><p>Nenhum item adicionado anida</p></li>
             </ul>
 
-        </div>
 
+        </div>
     </div>
 
-
     <script src="js/script.js" defer></script>
-    
+
 </body>
+
 </html>
