@@ -1,21 +1,21 @@
-# 🛒 Carrinho de Compras Interativo
+    # 🛒 Carrinho de Compras Interativo
 
-Projeto desenvolvido em JavaScript puro para praticar manipulação do DOM e métodos modernos de array.
+    Projeto desenvolvido em JavaScript puro para praticar manipulação do DOM e métodos modernos de array.
 
-## 🚀 Funcionalidades
-- Adição de produtos com nome, preço e quantidade.
-- Incremento e decremento dinâmico de itens estilo iFood.
-- Cálculo automático do valor total do carrinho utilizando o método `reduce()`.
-- Interface responsiva em CSS (Flexbox).
+    ## 🚀 Funcionalidades
+    - Adição de produtos com nome, preço e quantidade.
+    - Incremento e decremento dinâmico de itens estilo iFood.
+    - Cálculo automático do valor total do carrinho utilizando o método `reduce()`.
+    - Interface responsiva em CSS (Flexbox).
 
-## 🛠️ Tecnologias Utilizadas
-- HTML5
-- CSS3 (Flexbox)
-- JavaScript ES6+ (`reduce`, `map`, `filter`)
+    ## 🛠️ Tecnologias Utilizadas
+    - HTML5
+    - CSS3 (Flexbox)
+    - JavaScript ES6+ (`reduce`, `map`, `filter`)
 
-## 📌 Como rodar o projeto
-Apenas abra o arquivo `index.html` em qualquer navegador.
+    ## 📌 Como rodar o projeto
+    Apenas abra o arquivo `index.html` em qualquer navegador.
 
-### 📸 Aparencia do projeto(Apenas alinhada)
-- Foto da aparencia atual do projeto, apenas alguns ajustes com o flexbox
-<img src="img/preview.png" alt="Demonstração do projeto" width="400">
+    ## 📸 Aparencia do projeto
+    - Foto da aparencia atual do projeto, ja estruturado 
+    <img src="img/preview.png" alt="Demonstração do projeto" width="400">
