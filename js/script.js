@@ -1,60 +1,118 @@
-const form = document.querySelector('form') 
-const inputName = document.querySelector('#input-name') 
-const inputPrice = document.querySelector('#input-price') 
-const inputQuantity = document.querySelector('#input-quantity') 
-const listaHTML = document.querySelector('ul') 
+const form = document.querySelector('form.main') 
+const inputName = document.querySelector('#name') 
+const inputPrice = document.querySelector('#price') 
+const inputQuantity = document.querySelector('#quantity') 
+const listHTML = document.querySelector('ul.list') 
+
 let listProducts = [] 
 
+let quantityOfProducts = 0
+
 form.addEventListener('submit', (event) => { 
+    const placeholder = document.querySelector('ul.list>li.placeholder');
+        if (placeholder) {
+            placeholder.remove();
+        }
     event.preventDefault() 
-    const currentProduct = { 
-        info:[ 
-            { data: Number(inputPrice.value), category: 'price' }, 
-            { data: inputName.value, category: 'name' }, 
-        ], 
-        quantity: Number(inputQuantity.value) 
-    } 
+    quantityOfProducts++
+
+    const currentProduct = {
+        price: Number(inputPrice.value),
+        name: inputName.value,
+        quantity:Number(inputQuantity.value)
+    }
     listProducts.push(currentProduct) 
+    itemAtributes = {
 
-    let info, counter;
+        classOfItems:{
+            counter: "counter",
+            info: "information",
+        },
 
-    function createItem(object) { 
+        classOfDescription:{
+            name: "name",
+            price: "price",
+        },
+
+        classOfCounterIcons: {
+            add: "add",
+            minus: {
+                singleItem: "remove",      // quantidade é 1
+                multipleItems: "minus",    // quantidade é > 1
+            },
+        },
+    }
+
+
+    function createItem(quantity){
         const itemHTML = document.createElement('li') 
-        itemHTML.classList.toggle('item') 
-        listaHTML.append(itemHTML) 
-        
-        info = document.createElement('div')
-        counter = document.createElement('div')
-        info.classList.add('information') 
-        counter.classList.add('counter-area') 
-        
-        itemHTML.append(info, counter)
+        itemHTML.classList.add('item') 
+        itemHTML.dataset.productId = quantity.toString().padStart(3, '0');
+        listHTML.append(itemHTML)
+        return itemHTML;
+    }
 
-        const divPrice = document.createElement('div')
-        divPrice.classList.add(object.info[0].category)
-        divPrice.textContent = object.info[0].data
+    function createDivsInItem(item, clas){
 
-        const divName = document.createElement('div')
-        divName.classList.add(object.info[1].category)
-        divName.textContent = object.info[1].data
+        const [counterArea, infoArea] = [
+            clas.counter,
+            clas.info,
+        ].map(clas => {
+            const el = document.createElement('div');
+            el.classList.add(`${clas}-area`);
+            return el;
+        });
+        item.append(infoArea, counterArea)
+        return { counterArea, infoArea };
+    }
 
+    function createDescription(info, clas, prod) { 
+        const [divPrice, divName] = [clas.price,clas.name].map(clas => {
+            const el = document.createElement('div');
+            el.classList.add(`${clas}`);
+            return el;
+        });
+        divName.textContent = `${prod.name}`
+        divPrice.textContent = `${prod.price}`
         info.append(divPrice, divName)
+        return {divPrice, divName}
     } 
 
-    function createCounter(object) { 
-        createItem(currentProduct) 
-        const [btnMinus, btnPlus] = ['button', 'button'].map(tag => document.createElement(tag))
-        ;[btnMinus, btnPlus].forEach(btn => {
-            btn.classList.toggle('btn')
-            btn.classList.toggle('count')
-        })
+    function createCounter(counter,clas,quantity){ 
+
+        const [btnMinus, btnAdd] = Array.from({ length: 2 }, () => {
+            const el = document.createElement('button');
+            el.classList.add('material-symbols-outlined');
+            return el;
+        });   
+
+        if(quantity == 1){
+            btnMinus.textContent = `${clas.minus.singleItem}`
+            btnMinus.classList.add(clas.minus.singleItem)
+        }
+        if(quantity >= 2){
+            btnMinus.textContent = `${clas.minus.multipleItems}`
+            btnMinus.classList.add(clas.minus.multipleItems)
+        }
+        btnAdd.textContent = `${clas.add}`
+
         const textCount = document.createElement('p') 
-        btnMinus.textContent = '-' 
-        btnPlus.textContent = '+' 
-        textCount.textContent = object.quantity 
-        counter.append(btnMinus, textCount, btnPlus) 
-    } 
+        textCount.textContent = quantity
 
-    createCounter(currentProduct) 
-    form.reset() 
-})
+        counter.append(btnMinus, textCount, btnAdd) 
+        return{btnMinus, textCount, btnAdd}
+    }
+    
+    function itemMaster(){
+        const itemHTML = createItem(quantityOfProducts)
+        const {counterArea, infoArea} = createDivsInItem(itemHTML,itemAtributes.classOfItems)
+        createDescription(infoArea,itemAtributes.classOfDescription,currentProduct)
+        createCounter(counterArea,itemAtributes.classOfCounterIcons,currentProduct.quantity)
+
+    }
+    itemMaster()
+    form.reset()
+});
+
+
+    
