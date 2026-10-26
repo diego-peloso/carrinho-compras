@@ -26,7 +26,7 @@ form.addEventListener('submit', (event) => {
 
         classOfItems:{
             counter: "counter",
-            info: "information",
+            info: "info",
         },
 
         classOfDescription:{
@@ -37,8 +37,8 @@ form.addEventListener('submit', (event) => {
         classOfCounterIcons: {
             add: "add",
             minus: {
-                singleItem: "remove",      // quantidade é 1
-                multipleItems: "minus",    // quantidade é > 1
+                singleItem: "delete",      // quantidade é 1
+                multipleItems: "remove",    // quantidade é > 1
             },
         },
     }
@@ -74,15 +74,15 @@ form.addEventListener('submit', (event) => {
         });
         divName.textContent = `${prod.name}`
         divPrice.textContent = `${prod.price}`
-        info.append(divPrice, divName)
-        return {divPrice, divName}
+        info.append(divName,divPrice)
+        return {divName,divPrice}
     } 
 
     function createCounter(counter,clas,quantity){ 
 
         const [btnMinus, btnAdd] = Array.from({ length: 2 }, () => {
             const el = document.createElement('button');
-            el.classList.add('material-symbols-outlined');
+            el.classList.add('material-symbols-outlined','icon-counter','btn-counter');
             return el;
         });   
 
@@ -95,6 +95,7 @@ form.addEventListener('submit', (event) => {
             btnMinus.classList.add(clas.minus.multipleItems)
         }
         btnAdd.textContent = `${clas.add}`
+        btnAdd.classList.add(clas.add)
 
         const textCount = document.createElement('p') 
         textCount.textContent = quantity
