@@ -165,7 +165,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        gap: var(--space-sm) 0;
+        gap: var(--space-md) 0;
     }
     ul{
         width: 100%;
@@ -188,7 +188,6 @@
         list-style-type: none;
     }
     .item{
-        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -199,7 +198,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        gap: 0;
+        gap: var(--space-sm);
 
     }
     .counter-area{
@@ -225,29 +224,23 @@
     }
     .btn-counter{
         padding: 0.75rem;
-   
+
     }
-        :is(.delete,.remove):hover{border-radius:var(--radius-sm) 0 0 var(--radius-sm);}
     .btn-counter:hover{
-        font-variation-settings:'wght' 600,'opsz 20';
+        font-variation-settings:'wght' 700,'opsz 20';
         transition: all 0.2s ease-in-out;
         background-color: var(--color-bg-subtle);
         transform: scale(1.01);
     }
-    .add:hover{
-        border-radius: 0 var(--radius-sm) var(--radius-sm) 0
-    }
+
+    :is(.delete,.remove):hover{border-radius:var(--radius-sm) 0 0 var(--radius-sm);}
+    .add:hover{border-radius: 0 var(--radius-sm) var(--radius-sm) 0}
+
+
     .btn-counter:active{
         color: var(--color-brand-pressed);
         font-variation-settings:'wght' 600,'opsz 20';
         transition: all 0.3s ease-in-out;
         background-color: var(--color-bg-subtle);
         transform: scale(0.99);
-    }
-    .delete{
-        font-variation-settings:
-        'FILL' 1,
-        'wght' 500,
-        'GRAD' 0,
-        'opsz' 20;
     }
