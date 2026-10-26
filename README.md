@@ -91,6 +91,6 @@ carrinho-compras/
 ## ✒️ Autoria & Contribuições
 
 
-* **Desenvolvedor:** [Diego Peloso de Oliveira](https://github.com)
+* **Desenvolvedor:** [Repositório no Linkedin](https://github.com/diego-peloso/carrinho-compras)
 * **Desenvolvedor:** [Diego Peloso de Oliveira](https://github/diego-peloso)
 
