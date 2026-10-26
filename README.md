@@ -32,17 +32,14 @@ Este é um projeto de **Carrinho de Compras** que simula a experiência de geren
 
 ## 🚀 Tecnologias Utilizadas
 
-![HTML5](https://shields.io)
-![CSS3](https://shields.io)
-![JavaScript](https://shields.io)
-![Git](https://shields.io)
+<img src="https://shields.io" alt="HTML5"> <img src="https://shields.io" alt="CSS3"> <img src="https://shields.io" alt="JavaScript"> <img src="https://shields.io" alt="Git">
+
 ---
 
 ## 📸 Demonstração & Capturas de Tela
 
 | Interface do Formulário e Produtos |
 | :---: |
-
 | <img src="img/preview.png" width="400px" alt="Interface Atual do Carrinho"> |
 
 ---
