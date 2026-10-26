@@ -54,6 +54,8 @@
 
     form {
         display: flex;
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
         gap:var(--space-lg);
         width: 100%;
@@ -85,10 +87,9 @@
         width: 100%;
         padding: var(--space-lg);
         border-radius: var(--radius-md);
-        gap: var(--space-xl);
+        gap:var(--space-lg);
         background-color:var(--color-bg-surface);
         border:var(--border-width-sm) solid var(--color-border-subtle);
-
     }
     .group-text-fields{
         display: flex;
@@ -164,6 +165,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        gap: var(--space-sm) 0;
     }
     ul{
         width: 100%;
@@ -178,7 +180,7 @@
     }
     li{
         width: 100%;
-        padding:var(--space-md) var(--space-lg);
+        padding:var(--space-md);
         border-width: 0 0  var(--border-width-sm) 0;
         border-style:solid;
         border-color: var(--color-border-subtle);
@@ -197,6 +199,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        gap: 0;
 
     }
     .counter-area{
@@ -213,6 +216,7 @@
         color: var(--color-text-primary);
         font-weight: var(--font-weight-semibold);
         font-size: var(--font-size-sm);
+        overflow: hidden;
 
 
     }
@@ -221,19 +225,24 @@
     }
     .btn-counter{
         padding: 0.75rem;
-        border-radius: var(--radius-sm);
-
-
+   
     }
+        :is(.delete,.remove):hover{border-radius:var(--radius-sm) 0 0 var(--radius-sm);}
     .btn-counter:hover{
-        color: var(--color-brand-hover);
         font-variation-settings:'wght' 600,'opsz 20';
         transition: all 0.2s ease-in-out;
+        background-color: var(--color-bg-subtle);
+        transform: scale(1.01);
+    }
+    .add:hover{
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0
     }
     .btn-counter:active{
         color: var(--color-brand-pressed);
         font-variation-settings:'wght' 600,'opsz 20';
         transition: all 0.3s ease-in-out;
+        background-color: var(--color-bg-subtle);
+        transform: scale(0.99);
     }
     .delete{
         font-variation-settings:
