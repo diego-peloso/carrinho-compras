@@ -32,7 +32,7 @@ Este é um projeto de **Carrinho de Compras** que simula a experiência de geren
 
 ## 🚀 Tecnologias Utilizadas
 <!-- HTML5 -->
-![HTML5](https://shields.io)
+![HTML5]#E34F26
 
 <!-- CSS3 -->
 ![CSS3](https://shields.io)
