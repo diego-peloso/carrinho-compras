@@ -6,19 +6,29 @@
         --area-content-width:30rem;
         --content-padding: var(--space-lg)
     }
-        *,
-        *::before,
-        *::after {
+    *,
+    *::before,
+    *::after{
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
+    .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 1,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 20;
+    }
+
+
     body {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 100vh;
+        min-height: 100vh;
         font-family: 'Montserrat';
         background-color: var(--color-bg-body);
         line-height:var(--lh-lg);
@@ -44,6 +54,8 @@
 
     form {
         display: flex;
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
         gap:var(--space-lg);
         width: 100%;
@@ -51,11 +63,11 @@
 
     h1,h2 {
         line-height: var(--lh-sm);
-        font-weight: var(--font-weight-semibold)
+        font-weight: var(--font-weight-semibold);
     }
     h3,h4{
         line-height: var(--lh-md);
-        font-weight: var(--font-weight-medium)
+        font-weight: var(--font-weight-medium);
     }
     .area-conteiner{   
         display: flex;
@@ -63,6 +75,7 @@
         justify-content: center;
         flex-direction: column; 
         width:var(--area-content-width);
+        max-width: 100%;
         padding:0 var(--space-lg);
         gap: var(--space-xl) 0;
     }
@@ -74,10 +87,9 @@
         width: 100%;
         padding: var(--space-lg);
         border-radius: var(--radius-md);
-        gap: var(--space-xl);
+        gap:var(--space-lg);
         background-color:var(--color-bg-surface);
-        border:var(--border-width-sm) solid var(--color-border-subtle)
-
+        border:var(--border-width-sm) solid var(--color-border-subtle);
     }
     .group-text-fields{
         display: flex;
@@ -111,7 +123,7 @@
         font-size: var(--font-size-sm);
         line-height: var(--lh-sm);
     }
-    .btn{
+    .btn-brand{
         width: 100%;
         font-weight: var(--font-weight-semibold);
         font-size: var(--font-size-md);
@@ -126,7 +138,7 @@
     .btn:hover{
         background-color: var(--color-brand-hover);
         transform: scale(1.01);
-        text-decoration: underline
+        text-decoration: underline;
     }
 
     .btn:active{
@@ -153,6 +165,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        gap: var(--space-md) 0;
     }
     ul{
         width: 100%;
@@ -167,10 +180,67 @@
     }
     li{
         width: 100%;
-        padding:var(--space-md) var(--space-lg);
+        padding:var(--space-md);
         border-width: 0 0  var(--border-width-sm) 0;
         border-style:solid;
         border-color: var(--color-border-subtle);
         background-color: var(--color-bg-body);
         list-style-type: none;
+    }
+    .item{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .info-area{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: var(--space-sm);
+
+    }
+    .counter-area{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-bg-surface);
+        border: var(--border-width-sm) solid var(--color-border-subtle);
+        color: var(--color-brand-default);
+        border-radius: var(--radius-sm);
+
+    }
+    .counter-area p{
+        color: var(--color-text-primary);
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-sm);
+        overflow: hidden;
+
+
+    }
+    .icon-counter{
+        background-color: transparent;
+    }
+    .btn-counter{
+        padding: 0.75rem;
+
+    }
+    .btn-counter:hover{
+        font-variation-settings:'wght' 700,'opsz 20';
+        transition: all 0.2s ease-in-out;
+        background-color: var(--color-bg-subtle);
+        transform: scale(1.01);
+    }
+
+    :is(.delete,.remove):hover{border-radius:var(--radius-sm) 0 0 var(--radius-sm);}
+    .add:hover{border-radius: 0 var(--radius-sm) var(--radius-sm) 0}
+
+
+    .btn-counter:active{
+        color: var(--color-brand-pressed);
+        font-variation-settings:'wght' 600,'opsz 20';
+        transition: all 0.3s ease-in-out;
+        background-color: var(--color-bg-subtle);
+        transform: scale(0.99);
     }
