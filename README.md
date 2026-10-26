@@ -1,50 +1,97 @@
-<div align="center">
-  <img src="img/preview.png" alt="Demonstração do projeto" width="600" style="border-radius: 8px;">
+# 🛒 Carrinho de Compras
 
-  # 🛒 Carrinho de Compras Interativo
+![Preview do Projeto](img/preview.png)
 
-  <p align="center">
-    <img src="https://shields.io" alt="JavaScript">
-    <img src="https://shields.io" alt="HTML5">
-    <img src="https://shields.io" alt="CSS3">
-  </p>
-
-  <p><i>Projeto desenvolvido em JavaScript puro para praticar manipulação do DOM e métodos modernos de array.</i></p>
-</div>
-
-<hr>
-
-## 🚀 Funcionalidades
-
-O projeto simula a experiência de um e-commerce moderno com as seguintes capacidades:
-
-* **Gerenciamento de Itens:** Adição de produtos informando nome, preço e quantidade.
-* **Controle de Quantidade:** Incremento e decremento dinâmico de itens diretamente no carrinho (estilo iFood).
-* **Cálculo em Tempo Real:** Atualização automática do valor total utilizando o método `reduce()`.
-* **Layout Fluido:** Interface totalmente responsiva construída com CSS Flexbox.
+> Um gerenciador e carrinho de compras dinâmico desenvolvido com foco em arquitetura escalável de estilos e manipulação de árvore de elementos (DOM).
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🚧 Status do Projeto: Em Fase Inicial / Conceitual
 
-Abaixo estão as ferramentas e conceitos do ecossistema Web aplicados neste projeto:
+⏱️ **Estágio Atual:** Funcionalidades base e UI em desenvolvimento.
+> O projeto encontra-se na sua etapa inicial de integração. A estrutura visual principal (HTML) e os tokens de estilização (CSS) foram implementados, e o foco atual está no desenvolvimento da lógica do JavaScript e refinamentos de espaçamento do layout.
 
-* **HTML5:** Estruturação semântica da página.
-* **CSS3:** Estilização moderna utilizando propriedades avançadas de Flexbox.
-* **JavaScript ES6+:** Manipulação robusta do DOM e métodos funcionais de array:
-  * `reduce()` — Para consolidação e cálculo dos valores.
-  * `map()` — Para renderização dinâmica dos elementos na tela.
-  * `filter()` — Para remoção cirúrgica de itens do carrinho.
+### 🛠️ O que já foi feito:
+*   **Formulário de Entrada:** Campos estruturados para capturar produto, preço e quantidade.
+*   **Design Tokens:** Estrutura moderna de variáveis CSS dividida entre globais (`primitive.css`) e de contexto (`alias.css`).
+*   **Componentização Visual:** Estrutura inicial dos cards de listagem de produtos.
+
+### 📈 Próximos Passos / O que está sendo desenvolvido:
+1.  **Lógica dos Contadores (`js/script.js`):** Ativar os botões de incremento (`+`) e decremento (`-`) de quantidade.
+2.  **Cálculo Dinâmico:** Implementar a lógica do botão "Calcular Pedido" para processar os subtotais e o total geral.
+3.  **Refinamento de Layout:** Ajustar o espaçamento interno, alinhamento e padding do card de listagem de produtos para garantir a consistência visual.
+4.  **Gerenciamento do Carrinho:** Fazer com que o botão "Pedir produto" insira dinamicamente novos itens na lista abaixo.
 
 ---
 
-## 📌 Como Rodar o Projeto
+## 💻 Sobre o Projeto
 
-Para visualizar o projeto localmente, basta seguir os passos abaixo:
+Este é um projeto de **Carrinho de Compras** que simula a experiência de gerenciamento de um pedido de e-commerce. O usuário pode preencher os dados de um item, adicioná-lo à listagem e gerenciar quantidades de forma interativa.
 
-1. Baixe os arquivos do repositório ou clone o projeto:
-   ```bash
-   git clone https://github.com
-   ```
-2. Navegue até a pasta do projeto.
-3. Dê um duplo clique no arquivo **`index.html`** para abri-lo diretamente em qualquer navegador moderno.
+---
+
+## 🚀 Tecnologias Utilizadas
+
+![HTML5](https://shields.io)
+![CSS3](https://shields.io)
+![JavaScript](https://shields.io)
+![Git](https://shields.io)
+---
+
+## 📸 Demonstração & Capturas de Tela
+
+| Interface do Formulário e Produtos |
+| :---: |
+
+| <img src="img/preview.png" width="400px" alt="Interface Atual do Carrinho"> |
+
+---
+
+## 🛠️ Pré-requisitos
+
+Para rodar o projeto localmente, você precisará apenas de:
+1. Um navegador web moderno (Google Chrome, Firefox, Edge ou Safari).
+2. Uma extensão de servidor local no seu editor de código (como a **Live Server** para o VS Code).
+
+---
+
+## 🔧 Como Clonar e Executar o Projeto
+
+```bash
+# 1. Clonar o repositório
+git clone https://github.com
+
+# 2. Entrar na pasta
+cd carrinho-compras
+```
+
+*   **Execução:** Abra a pasta no seu editor de código e execute o arquivo `index.html` utilizando a extensão **Live Server** do seu navegador.
+
+---
+
+## 📂 Estrutura de Arquivos Principal
+
+```text
+carrinho-compras/
+├── css/
+│   ├── design-tokens/
+│   │   ├── alias.css         # Variáveis de contexto/tema
+│   │   └── primitive.css     # Variáveis brutas globais
+│   ├── fonts.css             # Setup da tipografia Montserrat
+│   └── style.css             # Estilização e layout geral
+├── fonts/
+│   └── Montserrat.woff2      # Fonte local otimizada
+├── img/
+│   └── preview.png           # Captura de tela do layout
+├── js/
+│   └── script.js             # [Em construção] Lógica do carrinho
+├── index.html                # Estrutura semântica da aplicação
+└── README.md                 # Documentação do projeto
+```
+
+---
+
+## ✒️ Autoria & Contribuições
+
+* **Desenvolvedor:** [Diego Peloso de Oliveira](https://github.com)
+* **LinkedIn:** [Diego Peloso de Oliveira](https://linkedin.com)
