@@ -5,43 +5,48 @@ const inputQuantity = document.querySelector('#quantity')
 const listHTML = document.querySelector('ul.list') 
 
 let listProducts = [] 
-
 let quantityOfProducts = 0
 
+const itemAtributes = { 
+
+    classOfItems:{
+        counter: "counter",
+        info: "info",
+    },
+
+    classOfDescription:{
+        name: "name",
+        price: "price",
+    },
+
+    classOfCounterIcons: {
+        add: "add",
+        minus: {
+                singleItem: "delete",      // quantidade é 1
+                multipleItems: "remove",    // quantidade é > 1
+        },
+    },
+}
+
 form.addEventListener('submit', (event) => { 
+    event.preventDefault() 
+    quantityOfProducts++
     const placeholder = document.querySelector('ul.list>li.placeholder');
         if (placeholder) {
             placeholder.remove();
         }
-    event.preventDefault() 
-    quantityOfProducts++
+
+
 
     const currentProduct = {
         price: Number(inputPrice.value),
         name: inputName.value,
         quantity:Number(inputQuantity.value)
     }
+
+
     listProducts.push(currentProduct) 
-    itemAtributes = {
 
-        classOfItems:{
-            counter: "counter",
-            info: "info",
-        },
-
-        classOfDescription:{
-            name: "name",
-            price: "price",
-        },
-
-        classOfCounterIcons: {
-            add: "add",
-            minus: {
-                singleItem: "delete",      // quantidade é 1
-                multipleItems: "remove",    // quantidade é > 1
-            },
-        },
-    }
 
 
     function createItem(quantity){
@@ -98,6 +103,7 @@ form.addEventListener('submit', (event) => {
         btnAdd.classList.add(clas.add)
 
         const textCount = document.createElement('p') 
+        textCount.classList.add('quantity')
         textCount.textContent = quantity
 
         counter.append(btnMinus, textCount, btnAdd) 
@@ -111,9 +117,47 @@ form.addEventListener('submit', (event) => {
         createCounter(counterArea,itemAtributes.classOfCounterIcons,currentProduct.quantity)
 
     }
+
     itemMaster()
     form.reset()
 });
 
+listHTML.addEventListener('click',(event)=>{
+    const btn = event.target.closest('.btn-counter')
+    if(btn){
+        const item = event.target.closest('li.item')
+        const id = item.dataset.productId
+        const index = Number(id) -1
+        const classRemove = btn.classList.contains('remove')
+        const classDelete = btn.classList.contains('delete')
+        const classAdd = btn.classList.contains('add')
+        const placeOfQuantity = btn.parentElement.querySelector('p')
+        const btnOpposite= btn.parentElement.querySelector('.btn-counter')
 
-    
+        function updateQuantity(clas){
+            if(classRemove){
+                listProducts[index].quantity--
+                placeOfQuantity.textContent = listProducts[index].quantity
+                if(listProducts[index].quantity == 1){
+                    btn.classList.replace(`${clas.multipleItems}`,`${clas.singleItem}`)
+                    btn.textContent = `${clas.singleItem}`
+                }
+
+            }
+
+            else if(classDelete){
+                item.remove()
+            }
+
+            else if(classAdd){
+                listProducts[index].quantity++
+                placeOfQuantity.textContent = listProducts[index].quantity}
+                if(listProducts[index].quantity >= 2){
+                    btnOpposite.classList.replace(`${clas.singleItem}`,`${clas.multipleItems}`)
+                    btnOpposite.textContent = `${clas.multipleItems}`
+                }
+            }
+
+        }updateQuantity(itemAtributes.classOfCounterIcons.minus)
+
+}) 
