@@ -77,8 +77,12 @@ form.addEventListener('submit', (event) => {
             el.classList.add(`${clas}`);
             return el;
         });
+        const formattedPrice = prod.price.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+        });
         divName.textContent = `${prod.name}`
-        divPrice.textContent = `${prod.price}`
+        divPrice.textContent = `${formattedPrice}`       
         info.append(divName,divPrice)
         return {divName,divPrice}
     } 
