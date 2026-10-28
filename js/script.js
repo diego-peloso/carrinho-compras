@@ -3,7 +3,7 @@ const inputName = document.querySelector('#name')
 const inputPrice = document.querySelector('#price') 
 const inputQuantity = document.querySelector('#quantity') 
 const listHTML = document.querySelector('ul.list') 
-
+const quantityHTML = document.querySelector('p.quantity')
 let listProducts = [] 
 let quantityOfProducts = 0
 
@@ -31,6 +31,7 @@ const itemAtributes = {
 form.addEventListener('submit', (event) => { 
     event.preventDefault() 
     quantityOfProducts++
+    quantityHTML.textContent = `${quantityOfProducts}`
     const placeholder = document.querySelector('ul.list>li.placeholder');
         if (placeholder) {
             placeholder.remove();
@@ -125,7 +126,6 @@ form.addEventListener('submit', (event) => {
     itemMaster()
     form.reset()
 });
-
 listHTML.addEventListener('click',(event)=>{
     const btn = event.target.closest('.btn-counter')
     if(btn){
@@ -151,6 +151,7 @@ listHTML.addEventListener('click',(event)=>{
 
             else if(classDelete){
                 item.remove()
+                quantityOfProducts--
             }
 
             else if(classAdd){
@@ -160,8 +161,8 @@ listHTML.addEventListener('click',(event)=>{
                     btnOpposite.classList.replace(`${clas.singleItem}`,`${clas.multipleItems}`)
                     btnOpposite.textContent = `${clas.multipleItems}`
                 }
-            }
-
-        }updateQuantity(itemAtributes.classOfCounterIcons.minus)
-
+        }
+        updateQuantity(itemAtributes.classOfCounterIcons.minus)
+        quantityHTML.textContent = `${quantityOfProducts}`
+        }
 }) 
