@@ -27,12 +27,23 @@ const itemAtributes = {
         },
     },
 }
+let placeholder = document.querySelector('ul.list>li.placeholder');
+function createPlaceholder(){
+    if(!placeholder && quantityOfProducts == 0){
+        placeholder = document.createElement('li')
+        placeholder.classList.add('placeholder')
+        placeholder.textContent = "Nenhum item adicionado ainda.."
+        listHTML.append(placeholder)
+        return placeholder
+    }
+}
+
 
 form.addEventListener('submit', (event) => { 
     event.preventDefault() 
     quantityOfProducts++
-    quantityHTML.textContent = `${quantityOfProducts}`
-    const placeholder = document.querySelector('ul.list>li.placeholder');
+    quantityHTML.textContent = quantityOfProducts
+
         if (placeholder) {
             placeholder.remove();
         }
@@ -150,19 +161,27 @@ listHTML.addEventListener('click',(event)=>{
             }
 
             else if(classDelete){
-                item.remove()
                 quantityOfProducts--
+                quantityHTML.textContent = quantityOfProducts
+                item.remove()
+                listProducts.splice(index)
+                
             }
 
             else if(classAdd){
                 listProducts[index].quantity++
-                placeOfQuantity.textContent = listProducts[index].quantity}
+                placeOfQuantity.textContent = listProducts[index].quantity
+                console.log(listProducts[index].quantity)
                 if(listProducts[index].quantity >= 2){
                     btnOpposite.classList.replace(`${clas.singleItem}`,`${clas.multipleItems}`)
                     btnOpposite.textContent = `${clas.multipleItems}`
                 }
-        }
+            }
+        }   
         updateQuantity(itemAtributes.classOfCounterIcons.minus)
         quantityHTML.textContent = `${quantityOfProducts}`
-        }
+        placeholder  = createPlaceholder()
+        
+    }
 }) 
+
