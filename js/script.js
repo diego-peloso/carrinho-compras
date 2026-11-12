@@ -1,3 +1,4 @@
+import { iniciarModal } from './modal.js'
 const form = document.querySelector('form.main') 
 const inputName = document.querySelector('#name') 
 const inputPrice = document.querySelector('#price') 
@@ -165,7 +166,7 @@ listHTML.addEventListener('click',(event)=>{
                 quantityHTML.textContent = quantityOfProducts
                 item.remove()
                 listProducts.splice(index)
-                
+                placeholder  = createPlaceholder()
             }
 
             else if(classAdd){
@@ -180,17 +181,10 @@ listHTML.addEventListener('click',(event)=>{
         }   
         updateQuantity(itemAtributes.classOfCounterIcons.minus)
         quantityHTML.textContent = `${quantityOfProducts}`
-        placeholder  = createPlaceholder()
+
         
     }
 }) 
-const btnCalc = document.querySelector('.btn-calc')
-btnCalc.addEventListener('click', (event) =>{
-    const result = listProducts.reduce((acc, item) =>{
-        acc+= item.price * item.quantity
-        return acc
-    },0)
-    alert(result)   
 
-})
 
+iniciarModal()
