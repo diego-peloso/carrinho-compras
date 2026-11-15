@@ -52,11 +52,37 @@
                     <li class="placeholder">Nenhum item adicionado ainda..</li>
                 </ul>
             </div>
-            <button class="btn btn-brand">Calcular Pedido</button>
+            <button class="btn btn-brand btn-calc btn-open-modal">Calcular Pedido</button>
         </div>
     </div>
 
-    <script src="js/script.js" defer></script>
+    <dialog class="order-modal">
+
+        <button type="button" class="btn-close-modal" aria-label="Fechar resumo">
+            ✕
+        </button>   
+
+        <h2 class="modal-title">Resumo do pedido:</h2>
+
+        <!-- Lista de Produtos com Preço -->
+        <ul class="list-products">
+        </ul>
+
+        <hr class="divider">
+        <!-- Preço Total -->
+        <div class="total-price-conteiner">
+            <span>Preço Total</span>
+            <span class="total-price"></span>
+        </div>
+
+        <!-- Botões de ação -->
+        <footer class="modal-actions">
+            <button type="button" class="btn-brand confirm">Concluir pedido</button>
+            <button type="button" class="btn-secondary cancel">Cancelar</button>
+        </footer>
+    </dialog>
+
+    <script type="module" src="js/script.js" defer></script>
 
 </body>
 
