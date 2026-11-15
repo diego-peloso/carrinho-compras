@@ -150,3 +150,65 @@ listHTML.addEventListener('click', (event) => {
         }
     }
 });
+<<<<<<< HEAD
+=======
+listHTML.addEventListener('click',(event)=>{
+    const btn = event.target.closest('.btn-counter')
+    if(btn){
+        const item = event.target.closest('li.item')
+        const id = item.dataset.productId
+        const index = Number(id) -1
+        const classRemove = btn.classList.contains('remove')
+        const classDelete = btn.classList.contains('delete')
+        const classAdd = btn.classList.contains('add')
+        const placeOfQuantity = btn.parentElement.querySelector('p')
+        const btnOpposite= btn.parentElement.querySelector('.btn-counter')
+
+        function updateQuantity(clas){
+            if(classRemove){
+                listProducts[index].quantity--
+                placeOfQuantity.textContent = listProducts[index].quantity
+                if(listProducts[index].quantity == 1){
+                    btn.classList.replace(`${clas.multipleItems}`,`${clas.singleItem}`)
+                    btn.textContent = `${clas.singleItem}`
+                }
+
+            }
+
+            else if(classDelete){
+                quantityOfProducts--
+                quantityHTML.textContent = quantityOfProducts
+                item.remove()
+                listProducts.splice(index)
+                placeholder  = createPlaceholder()
+            }
+
+            else if(classAdd){
+                listProducts[index].quantity++
+                placeOfQuantity.textContent = listProducts[index].quantity
+                console.log(listProducts[index].quantity)
+                if(listProducts[index].quantity >= 2){
+                    btnOpposite.classList.replace(`${clas.singleItem}`,`${clas.multipleItems}`)
+                    btnOpposite.textContent = `${clas.multipleItems}`
+                }
+            }
+        }   
+        updateQuantity(itemAtributes.classOfCounterIcons.minus)
+        quantityHTML.textContent = `${quantityOfProducts}`
+
+        
+    }
+}) 
+
+const btnCalc = document.querySelector('.btn-calc')
+btnCalc.addEventListener('click', (event) =>{
+    const result = listProducts.reduce((acc, item) =>{
+        acc+= item.price * item.quantity
+        return acc
+    },0)
+
+
+})
+
+iniciarModal()
+>>>>>>> 41fb5d4 (teste)
