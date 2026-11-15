@@ -3,7 +3,7 @@
     @import "fonts.css";
 
     :root{
-        --area-content-width:30rem;
+        --area-content-width:390px;
         --content-padding: var(--space-lg)
     }
     *,
@@ -11,7 +11,7 @@
     *::after{
             box-sizing: border-box;
             margin: 0;
-            padding: 0;
+            padding: 0; 
         }
 
     .material-symbols-outlined {
