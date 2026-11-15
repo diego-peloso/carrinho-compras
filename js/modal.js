@@ -1,4 +1,4 @@
-const modal = document.querySelector('.order-modal'); // Corrigido de .modal para .order-modal
+const modal = document.querySelector('.order-modal');
 const btnOpenModal = document.querySelector('.btn-open-modal');
 const btnCloseModal = document.querySelector('.btn-close-modal');
 const btnConfirm = document.querySelector('.confirm');
@@ -41,7 +41,6 @@ export function addInModal(list) {
     listModal.innerHTML = '';
 
     list.forEach((item) => {
-        // Multiplica o preço pela quantidade para mostrar o subtotal do item
         const subtotal = item.price * item.quantity;
         const formattedPrice = subtotal.toLocaleString('pt-BR', {
             style: 'currency',
