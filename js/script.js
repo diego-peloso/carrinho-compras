@@ -1,190 +1,152 @@
-import { iniciarModal } from './modal.js'
-const form = document.querySelector('form.main') 
-const inputName = document.querySelector('#name') 
-const inputPrice = document.querySelector('#price') 
-const inputQuantity = document.querySelector('#quantity') 
-const listHTML = document.querySelector('ul.list') 
-const quantityHTML = document.querySelector('p.quantity')
-let listProducts = [] 
-let quantityOfProducts = 0
+import { iniciarModal, addInModal } from './modal-copy.js';
 
-const itemAtributes = { 
+const form = document.querySelector('form.main');
+const inputName = document.querySelector('#name');
+const inputPrice = document.querySelector('#price');
+const inputQuantity = document.querySelector('#quantity');
+const listHTML = document.querySelector('ul.list');
+const quantityHTML = document.querySelector('p.quantity');
 
-    classOfItems:{
-        counter: "counter",
-        info: "info",
-    },
+let listProducts = [];
+let nextId = 1;
 
-    classOfDescription:{
-        name: "name",
-        price: "price",
-    },
-
+const itemAtributes = {
+    classOfItems: { counter: 'counter', info: 'info' },
+    classOfDescription: { name: 'name', price: 'price' },
     classOfCounterIcons: {
-        add: "add",
-        minus: {
-                singleItem: "delete",      // quantidade é 1
-                multipleItems: "remove",    // quantidade é > 1
-        },
+        add: 'add',
+        minus: { singleItem: 'delete', multipleItems: 'remove' }
+    }
+};
+
+// Inicia o modal passando o que fazer ao abrir e ao confirmar o pedido
+iniciarModal(
+    () => {
+        addInModal(listProducts);
     },
+    () => {
+        alert('Pedido concluído com sucesso!');
+        listProducts = [];
+        listHTML.innerHTML = '';
+        updateTotalCounter();
+        togglePlaceholder();
+    }
+);
+
+function updateTotalCounter() {
+    quantityHTML.textContent = listProducts.length;
 }
-let placeholder = document.querySelector('ul.list>li.placeholder');
-function createPlaceholder(){
-    if(!placeholder && quantityOfProducts == 0){
-        placeholder = document.createElement('li')
-        placeholder.classList.add('placeholder')
-        placeholder.textContent = "Nenhum item adicionado ainda.."
-        listHTML.append(placeholder)
-        return placeholder
+
+function togglePlaceholder() {
+    let placeholder = document.querySelector('ul.list > li.placeholder');
+    if (listProducts.length === 0 && !placeholder) {
+        placeholder = document.createElement('li');
+        placeholder.classList.add('placeholder');
+        placeholder.textContent = 'Nenhum item adicionado ainda..';
+        listHTML.append(placeholder);
+    } else if (listProducts.length > 0 && placeholder) {
+        placeholder.remove();
     }
 }
 
-
-form.addEventListener('submit', (event) => { 
-    event.preventDefault() 
-    quantityOfProducts++
-    quantityHTML.textContent = quantityOfProducts
-
-        if (placeholder) {
-            placeholder.remove();
-        }
-
-
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
     const currentProduct = {
+        id: nextId++,
         price: Number(inputPrice.value),
         name: inputName.value,
-        quantity:Number(inputQuantity.value)
-    }
+        quantity: Number(inputQuantity.value)
+    };
 
+    listProducts.push(currentProduct);
+    updateTotalCounter();
+    togglePlaceholder();
 
-    listProducts.push(currentProduct) 
+    renderItem(currentProduct);
+    form.reset();
+});
 
+function renderItem(prod) {
+    const itemHTML = document.createElement('li');
+    itemHTML.classList.add('item');
+    itemHTML.dataset.productId = prod.id;
 
+    const infoArea = document.createElement('div');
+    infoArea.classList.add(`${itemAtributes.classOfItems.info}-area`);
 
-    function createItem(quantity){
-        const itemHTML = document.createElement('li') 
-        itemHTML.classList.add('item') 
-        itemHTML.dataset.productId = quantity.toString().padStart(3, '0');
-        listHTML.append(itemHTML)
-        return itemHTML;
-    }
+    const divName = document.createElement('div');
+    divName.classList.add(itemAtributes.classOfDescription.name);
+    divName.textContent = prod.name;
 
-    function createDivsInItem(item, clas){
-
-        const [counterArea, infoArea] = [
-            clas.counter,
-            clas.info,
-        ].map(clas => {
-            const el = document.createElement('div');
-            el.classList.add(`${clas}-area`);
-            return el;
-        });
-        item.append(infoArea, counterArea)
-        return { counterArea, infoArea };
-    }
-
-    function createDescription(info, clas, prod) { 
-        const [divPrice, divName] = [clas.price,clas.name].map(clas => {
-            const el = document.createElement('div');
-            el.classList.add(`${clas}`);
-            return el;
-        });
-        const formattedPrice = prod.price.toLocaleString('pt-BR', {
+    const divPrice = document.createElement('div');
+    divPrice.classList.add(itemAtributes.classOfDescription.price);
+    divPrice.textContent = prod.price.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
-        });
-        divName.textContent = `${prod.name}`
-        divPrice.textContent = `${formattedPrice}`       
-        info.append(divName,divPrice)
-        return {divName,divPrice}
-    } 
+    });
 
-    function createCounter(counter,clas,quantity){ 
+    infoArea.append(divName, divPrice);
 
-        const [btnMinus, btnAdd] = Array.from({ length: 2 }, () => {
-            const el = document.createElement('button');
-            el.classList.add('material-symbols-outlined','icon-counter','btn-counter');
-            return el;
-        });   
+    const counterArea = document.createElement('div');
+    counterArea.classList.add(`${itemAtributes.classOfItems.counter}-area`);
 
-        if(quantity == 1){
-            btnMinus.textContent = `${clas.minus.singleItem}`
-            btnMinus.classList.add(clas.minus.singleItem)
+    const btnMinus = document.createElement('button');
+    btnMinus.type = 'button';
+    btnMinus.classList.add('material-symbols-outlined', 'icon-counter', 'btn-counter');
+
+    const minusType = prod.quantity === 1
+        ? itemAtributes.classOfCounterIcons.minus.singleItem
+        : itemAtributes.classOfCounterIcons.minus.multipleItems;
+
+    btnMinus.textContent = minusType;
+    btnMinus.classList.add(minusType);
+
+    const textCount = document.createElement('p');
+    textCount.classList.add('quantity');
+    textCount.textContent = prod.quantity;
+
+    const btnAdd = document.createElement('button');
+    btnAdd.type = 'button';
+    btnAdd.classList.add('material-symbols-outlined', 'icon-counter', 'btn-counter', itemAtributes.classOfCounterIcons.add);
+    btnAdd.textContent = itemAtributes.classOfCounterIcons.add;
+
+    counterArea.append(btnMinus, textCount, btnAdd);
+    itemHTML.append(infoArea, counterArea);
+    listHTML.append(itemHTML);
+}
+
+listHTML.addEventListener('click', (event) => {
+    const btn = event.target.closest('.btn-counter');
+    if (!btn) return;
+
+    const item = event.target.closest('li.item');
+    const id = Number(item.dataset.productId);
+    const index = listProducts.findIndex((p) => p.id === id);
+    if (index === -1) return;
+
+    const placeOfQuantity = btn.parentElement.querySelector('p.quantity');
+    const btnMinus = btn.parentElement.querySelector('.delete, .remove');
+    const { singleItem, multipleItems } = itemAtributes.classOfCounterIcons.minus;
+
+    if (btn.classList.contains('remove')) {
+        listProducts[index].quantity--;
+        placeOfQuantity.textContent = listProducts[index].quantity;
+        if (listProducts[index].quantity === 1) {
+            btnMinus.classList.replace(multipleItems, singleItem);
+            btnMinus.textContent = singleItem;
         }
-        if(quantity >= 2){
-            btnMinus.textContent = `${clas.minus.multipleItems}`
-            btnMinus.classList.add(clas.minus.multipleItems)
+    } else if (btn.classList.contains('delete')) {
+        item.remove();
+        listProducts.splice(index, 1);
+        updateTotalCounter();
+        togglePlaceholder();
+    } else if (btn.classList.contains('add')) {
+        listProducts[index].quantity++;
+        placeOfQuantity.textContent = listProducts[index].quantity;
+        if (listProducts[index].quantity >= 2) {
+            btnMinus.classList.replace(singleItem, multipleItems);
+            btnMinus.textContent = multipleItems;
         }
-        btnAdd.textContent = `${clas.add}`
-        btnAdd.classList.add(clas.add)
-
-        const textCount = document.createElement('p') 
-        textCount.classList.add('quantity')
-        textCount.textContent = quantity
-
-        counter.append(btnMinus, textCount, btnAdd) 
-        return{btnMinus, textCount, btnAdd}
     }
-    
-    function itemMaster(){
-        const itemHTML = createItem(quantityOfProducts)
-        const {counterArea, infoArea} = createDivsInItem(itemHTML,itemAtributes.classOfItems)
-        createDescription(infoArea,itemAtributes.classOfDescription,currentProduct)
-        createCounter(counterArea,itemAtributes.classOfCounterIcons,currentProduct.quantity)
-
-    }
-
-    itemMaster()
-    form.reset()
 });
-listHTML.addEventListener('click',(event)=>{
-    const btn = event.target.closest('.btn-counter')
-    if(btn){
-        const item = event.target.closest('li.item')
-        const id = item.dataset.productId
-        const index = Number(id) -1
-        const classRemove = btn.classList.contains('remove')
-        const classDelete = btn.classList.contains('delete')
-        const classAdd = btn.classList.contains('add')
-        const placeOfQuantity = btn.parentElement.querySelector('p')
-        const btnOpposite= btn.parentElement.querySelector('.btn-counter')
-
-        function updateQuantity(clas){
-            if(classRemove){
-                listProducts[index].quantity--
-                placeOfQuantity.textContent = listProducts[index].quantity
-                if(listProducts[index].quantity == 1){
-                    btn.classList.replace(`${clas.multipleItems}`,`${clas.singleItem}`)
-                    btn.textContent = `${clas.singleItem}`
-                }
-
-            }
-
-            else if(classDelete){
-                quantityOfProducts--
-                quantityHTML.textContent = quantityOfProducts
-                item.remove()
-                listProducts.splice(index)
-                placeholder  = createPlaceholder()
-            }
-
-            else if(classAdd){
-                listProducts[index].quantity++
-                placeOfQuantity.textContent = listProducts[index].quantity
-                console.log(listProducts[index].quantity)
-                if(listProducts[index].quantity >= 2){
-                    btnOpposite.classList.replace(`${clas.singleItem}`,`${clas.multipleItems}`)
-                    btnOpposite.textContent = `${clas.multipleItems}`
-                }
-            }
-        }   
-        updateQuantity(itemAtributes.classOfCounterIcons.minus)
-        quantityHTML.textContent = `${quantityOfProducts}`
-
-        
-    }
-}) 
-
-
-iniciarModal()
